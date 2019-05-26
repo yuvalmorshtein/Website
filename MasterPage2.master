@@ -1,0 +1,155 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style>
+      div {     text-decoration: underline;
+                font-family:"Comic Sans MS", cursive, sans-serif;
+                font-size:x-large;
+          }
+
+
+      td {      padding: 10px 5px;
+                border-style: solid;
+                word-break: normal;
+                font-size:large;
+                font-family:"Comic Sans MS", cursive, sans-serif;
+                border-width:0px;
+         }
+
+      th {      font-weight: normal;
+                padding: 10px 5px;
+                border-style: solid;
+                overflow: hidden;
+                word-break: normal;
+                text-align:left;
+                overflow: hidden;
+                font-family:"Comic Sans MS", cursive, sans-serif;
+                font-size:x-large;
+                border-width:0px;
+         }
+
+      td.tg-yw4l {vertical-align: central;
+                  border-width:1px;
+                  text-align:center;
+
+            }
+
+      th.tg-yw4l{ vertical-align: central; 
+                  border-width:1px;
+                  text-align:center;
+
+              }
+   
+      
+      a:hover {color: pink;
+              }
+
+      a{   text-decoration:none
+       }
+        </style>
+</head>
+<body>
+         <table style="undefined;table-layout: fixed; width: 100%; background-color:mediumaquamarine">
+        <colgroup>
+            <col style="width: 87px"/>
+            <col style="width: 87px"/>
+            <col style="width: 87px"/>
+            <col style="width: 87px"/>
+            <col style="width: 87px"/>
+            <col style="width: 87px" />
+            <col style="width: 87px"/>
+        </colgroup>
+        <tr>
+            <%if(Session["IsAdmin"]=="True")
+                  Response.Write("<th style=\"text-align:left; font-size:medium\" colspan=\"4\">&nbsp &nbsp<a href=\"about.aspx\">About</a>&nbsp &nbsp &nbsp<a href=\"gallery.aspx\">Gallery</a>&nbsp &nbsp<a href=\"adminmanage.aspx\">Admin manager</a></th>");
+                 
+              else
+               Response.Write("<th style=\"text-align:left; font-size:medium\" colspan=\"4\">&nbsp &nbsp<a href=\"about.aspx\">About</a>&nbsp &nbsp &nbsp<a href=\"gallery.aspx\">Gallery</a></th>");
+                  
+              
+                 %>
+              <%
+                if(Session["uName"]==null)
+                    Response.Write("<th style=\"text-align:right; font-size:medium\" colspan=\"3\"><a href=\"login.aspx\">sign in</a>&nbsp &nbsp &nbsp<a href=\"register.aspx\">sign up</a> &nbsp&nbsp</th>");
+                
+                else
+                    Response.Write("<th style=\"text-align:right; font-size:medium\" colspan=\"3\">Hello " + Session["uName"] + "!&nbsp &nbsp &nbsp<a href=\"logout.aspx\">Log out</a> &nbsp&nbsp</th>");
+                    
+                     %>
+            
+        </tr>
+        <tr align="center">
+            <td colspan="7"><img src="images/logo.png" /></td>
+        </tr>
+        <tr style="text-align:center; color:blue; font-weight:bold">
+            <td></td>
+            <td><a href="homepage.aspx">Homepage</a></td>
+            <td><a href="format.aspx">Format</a></td>
+            <td><a href=" records.aspx">Statistics</a></td>
+            <td><a href=" prizes.aspx">Prizes</a></td>
+            <td><a href=" anthem.aspx">Anthem</a></td>
+            <td></td>
+        </tr>
+        
+        </table>
+        <br />
+        <br />
+    <table style="undefined; table-layout: fixed; width: 100%">
+        <colgroup>
+            <col style="width: 81px"/>
+            <col style="width: 102px"/>
+            <col style="width: 102px"/>
+            <col style="width: 102px"/>
+            <col style="width: 81px"/>
+        </colgroup>
+        <tr>
+            <th></th>
+            <th colspan="3" rowspan="7" style="text-align:left">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+            </th>
+            <th></th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td style="text-align:center" colspan="5">
+                Number of members : <%= Mycount %>
+                <br />
+                 © Yuval Morshtein
+                <br />
+                <a href="#top">back to top</a>
+            </td>
+        </tr>
+    </table>
+       
+    
+</body>
+</html>
+
